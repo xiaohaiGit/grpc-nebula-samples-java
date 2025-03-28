@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "cn.com.crsec.agency.chat";
+option java_outer_classname = "ChatBotAgencyProto";
+
+package cn.com.crsec.agency.chat;
+
+
+// 定义服务
+service ChatBotAgency {
+  rpc gatewayAccess (GatewayRequest) returns (GatewayReply) ;  // 网关泛化调用服务
+  rpc f1200451 (Req1200451) returns (Reply1200451);
+  rpc f1200452 (Req1200452) returns (Reply1200452);
+  rpc f1200453 (Req1200453) returns (Reply1200453);
+}
+// 公共入参
+message GenericParam
+{
+  string traceId = 1;
+  //  请求系统名称
+  string sysName = 2;
+  string trdTermcode = 3;
+  string requestIp = 4;
+};
+
+// 网关调用入口参数
+message GatewayRequest {
+  //  调用链id
+  string traceId = 1;
+  //  功能号
+  string funcNo = 2;
+  //终端信息
+  string trdTermcode = 3;
+  //  请求实际ip
+  string requestIp = 4;
+  //  资金号
+  string fundAccount = 5;
+  //  客户号
+  string userCode = 6;
+  //  客户姓名
+  string userName = 7;
+  //  分支机构
+  string khBranch = 8;
+  //  登录令牌
+  string custCert = 9;
+  // 网关通用入参,格式json字符串,包括功能号及对应入参 {"param1":"a","param2","b",.....}
+  string paramStr = 10;
+}
+
+// 网关调用返回结果
+message GatewayReply {
+  // 返回值格式：json字符串
+  string resStr = 1;
+}
+
+message Req1200451
+{
+  GenericParam genericParam = 1;
+  map<string, string> token = 2;
+};
+
+message Reply1200451{
+  int32 errorNo = 1;
+  string errorMsg = 2;
+  string results = 3;
+}
+
+
+
+message Req1200452
+{
+  GenericParam genericParam = 1;
+  map<string, string> token = 2;
+  string conversationId = 3;
+  string botId = 4;
+  string operationId = 5;
+};
+
+message Reply1200452{
+  int32 errorNo = 1;
+  string errorMsg = 2;
+  string results = 3;
+}
+
+message GrpcBotShopVo {
+  string botId = 1;
+  string operationId = 2;
+  string title = 3;
+  string description = 4;
+  string tag = 5;
+  string icon_url = 6;
+  string creator = 7;
+  string created_time = 8;
+  string if_picture = 9;
+}
+
+message Req1200453
+{
+  GenericParam genericParam = 1;
+  map<string, string> token = 2;
+  string operationId = 3;
+};
+
+message Reply1200453{
+  int32 errorNo = 1;
+  string errorMsg = 2;
+  repeated GrpcBotShopVo results = 3;
+}
+
+
+

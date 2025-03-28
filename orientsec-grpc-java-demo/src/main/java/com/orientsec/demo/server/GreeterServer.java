@@ -18,6 +18,7 @@ package com.orientsec.demo.server;
 
 import com.orientsec.demo.common.Constants;
 import com.orientsec.demo.service.GreeterImpl;
+import com.orientsec.demo.service.GreeterImpl2;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.slf4j.Logger;
@@ -38,8 +39,17 @@ public class GreeterServer {
   private int port = Constants.Port.GREETER_SERVICE_SERVER;
 
   private void start() throws IOException {
+
+    //server = NettyServerBuilder.forAddress(new InetSocketAddress("172.16.11.248", 9999))
+    //        .addService(new GreeterImpl())
+    //        .addService(new GreeterImpl2())
+    //        .build()
+    //        .start();
+
+
     server = ServerBuilder.forPort(port)
             .addService(new GreeterImpl())
+            .addService(new GreeterImpl2())
             .build()
             .start();
 

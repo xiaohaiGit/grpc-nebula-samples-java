@@ -1,11 +1,12 @@
-package com.orientsec.grpc;
+package com.upchina;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
-public class ClientApplication {
+public class GrpcWupGatewayClient {
     public static void main(String[] args) {
-        SpringApplication.run(ClientApplication.class, args);
+        SpringApplication.run(GrpcWupGatewayClient.class, args);
     }
 }

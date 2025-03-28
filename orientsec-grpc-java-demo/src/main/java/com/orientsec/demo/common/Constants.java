@@ -25,7 +25,7 @@ package com.orientsec.demo.common;
 public class Constants {
   
   public static class Port {
-    public static final int GREETER_SERVICE_SERVER = 51001;
+    public static final int GREETER_SERVICE_SERVER = 9999;
   }
 
 }

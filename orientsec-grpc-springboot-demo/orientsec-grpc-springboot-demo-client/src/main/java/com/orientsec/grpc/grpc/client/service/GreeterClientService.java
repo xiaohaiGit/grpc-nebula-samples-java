@@ -37,7 +37,7 @@ public class GreeterClientService {
         //test
         while (true) {
             try {
-                greet();
+                //greet();
                 Thread.sleep(5000L);
             } catch (InterruptedException e) {
                 logger.error(e.getMessage(), e);
